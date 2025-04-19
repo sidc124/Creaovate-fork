@@ -449,6 +449,23 @@ function initPageTransitions() {
             }
         ]
     });
+    // --- add this below ---
+barba.hooks.afterEnter((data) => {
+    if (data.next.namespace === 'home') {          // namespace set in <main data-barba-namespace="home">
+      const vid = data.next.container.querySelector('.hero-video');
+      if (vid) {
+        vid.currentTime = 0;
+        vid.play().catch(()=>{});                  // replay hero video
+      }
+    }
+  });
+  
+  barba.hooks.beforeLeave((data) => {
+    if (data.current.namespace === 'home') {
+      const vid = data.current.container.querySelector('.hero-video');
+      vid && vid.pause();                         // stop it when you leave
+    }
+  });
 
     function initSmoothScroll(container) {
 
