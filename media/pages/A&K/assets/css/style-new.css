@@ -3535,3 +3535,23 @@ main.touch .case-intro-image .btn-wrap {
 
 
 
+/* make .nav-bar the containing block for absolutely‑positioned children */
+.nav-bar{
+    position:relative;
+}
+
+/* the brand itself */
+.brand-name{
+    position:absolute;          /* takes it out of normal flow so nothing shifts */
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);  /* perfect centre of the bar */
+    
+    font-family:inherit;        /* inherits your heading font */
+    font-size:1rem;             /* tweak if it feels small/large */
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin:0;
+    pointer-events:none;        /* clicks still reach links underneath if they overlap */
+    z-index:1000;               /* sits above the bar’s background */
+}
